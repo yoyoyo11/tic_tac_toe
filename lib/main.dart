@@ -76,11 +76,14 @@ class _GameState extends State<Game> {
     String useImage;
 
     if (turnCounter > 8) {
-      headerText = 'Game Over: Tie game!';
       return;
     }
 
     if (boxMap[boxId] != 'blank.png') {
+      return;
+    }
+
+    if (gameWinner != '') {
       return;
     }
 
@@ -165,8 +168,7 @@ class _GameState extends State<Game> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              headerText,
+            Text(turnCounter > 8 && gameWinner == '' ? 'Game over: Tie Game!' : headerText,
               style: TextStyle(
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold,
